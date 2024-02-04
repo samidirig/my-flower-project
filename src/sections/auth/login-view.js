@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import * as Yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,8 +12,20 @@ import { Stack } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import backgroundVideo1 from "@/assets/videos/login_back_video.mp4";
+import backgroundVideo2 from "@/assets/videos/login_back_video_2.mp4";
+import backgroundVideo3 from "@/assets/videos/login_back_video_3.mp4";
+
 export default function LoginView() {
   const passwordShow = useBoolean();
+  const [videoSrc, setVideoSrc] = useState("");
+
+  useEffect(() => {
+    const videos = [backgroundVideo1, backgroundVideo2, backgroundVideo3];
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    const randomVideo = videos[randomIndex];
+    setVideoSrc(randomVideo);
+  }, []);
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -53,9 +67,11 @@ export default function LoginView() {
   };
 
   const renderLeft = (
-    <div className="flex flex-col items-center justify-center gap-2 h-1/3 w-full lg:h-full shadow-[0px_0px_40px_20px_#cbd5e0] lg:shadow-[0px_0px_40px_20px_#cbd5e0] lg:w-1/3 bg-gradient-to-b from-green-400 to-cyan-200 p-4 z-10">
-      <p className="text-5xl font-semibold leading-tight">New Here?</p>
-      <p className="text-xl text-center font-sans leading-tight p-5">
+    <div className="flex flex-col items-center justify-center gap-2 h-1/3 w-full lg:h-full lg: lg:w-1/3 bg-black bg-opacity-30 p-4 z-10">
+      <p className="text-5xl text-white font-semibold leading-tight">
+        New Here?
+      </p>
+      <p className="text-xl text-white text-center font-sans leading-tight p-5">
         Sign up and collect your memories now!
       </p>
       <button
@@ -72,74 +88,85 @@ export default function LoginView() {
   );
 
   const renderRight = (
-    <div className="flex flex-col items-center justify-start pt-20 lg:justify-center lg:pt-0 auto gap-5 h-2/3 w-full lg:h-full lg:w-2/3 bg-white">
+    <div className="flex flex-col items-center justify-start pt-20 lg:justify-center lg:pt-0 auto gap-5 h-2/3 w-full lg:h-full lg:w-2/3 bg-transparent z-10">
+      <div className="bg-white bg-opacity-30 p-14 rounded-2xl flex flex-col items-center justify-center gap-10 backdrop-filter backdrop-blur-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+        <p className="text-3xl font-semibold leading-tight">
+          Login to Your Account
+        </p>
 
-      <p className="text-3xl font-sans leading-tight">Login to Your Account</p>
-
-      <div className="h-px bg-gray-300 w-3/4" />
-
-      <FormProvider methods={methods} onSubmit={onSubmit}>
-        <Stack
-          spacing={2.5}
-          alignItems="flex-end"
-          sx={{ width: "350px", alignItems: "center" }}
-        >
-          <TextField
-            fullWidth
-            size="small"
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderRadius: "20px",
+        <div className="h-px bg-gray-700 w-3/4" />
+        <FormProvider methods={methods} onSubmit={onSubmit}>
+          <Stack
+            spacing={2.5}
+            alignItems="flex-end"
+            sx={{ width: "350px", alignItems: "center" }}
+          >
+            <TextField
+              fullWidth
+              size="small"
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    // borderRadius: "20px",
+                    borderColor: "#fff",
+                    color: "#fff",
+                    // boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.2)",
+                  },
                 },
-              },
-            }}
-            label="Email Adress"
-            type="text"
-            {...methods.register("email")}
-            error={Boolean(methods.formState.errors.email)}
-            helperText={methods.formState.errors.email?.message}
-          />
-          <TextField
-            fullWidth
-            size="small"
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderRadius: "20px",
+              }}
+              label="Email Adress"
+              type="text"
+              {...methods.register("email")}
+              error={Boolean(methods.formState.errors.email)}
+              helperText={methods.formState.errors.email?.message}
+            />
+            <TextField
+              fullWidth
+              size="small"
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    // borderRadius: "20px",
+                    borderColor: "#fff",
+                    color: "#fff",
+                    // boxShadow: "0px 0px 10px 5px rgba(0,0,0,0.2)",
+                  },
                 },
-              },
-            }}
-            label="Password"
-            type="password"
-            {...methods.register("password")}
-            error={Boolean(methods.formState.errors.password)}
-            helperText={methods.formState.errors.password?.message}
-            InputProps={{
-              endAdornment: (
-                <IconButton
-                  edge="end"
-                  onClick={passwordShow.onToggle}
-                  onMouseDown={(e) => e.preventDefault()}
-                  tabIndex={-1}
-                >
-                  {passwordShow.value ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              ),
-            }}
-          />
+              }}
+              label="Password"
+              type="password"
+              {...methods.register("password")}
+              error={Boolean(methods.formState.errors.password)}
+              helperText={methods.formState.errors.password?.message}
+              InputProps={{
+                endAdornment: (
+                  <IconButton
+                    edge="end"
+                    onClick={passwordShow.onToggle}
+                    onMouseDown={(e) => e.preventDefault()}
+                    tabIndex={-1}
+                  >
+                    {passwordShow.value ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                ),
+              }}
+            />
 
-          <button
-            type="submit"
-            className="text-xl text-center font-sans leading-tight pb-1 w-3/4 h-10 
+            <button
+              type="button"
+              //href="/"
+              onClick={() => {
+                window.location.href = "/";
+              }}
+              className="text-xl text-center font-sans leading-tight pb-1 w-3/4 h-10 
               bg-gradient-to-r from-green-200 to-cyan-100 rounded-full shadow-xl shadow-black/20 transition duration-150 ease-in-out 
             hover:bg-white hover:shadow-black/30 
               focus:outline-none
               active:bg-success-700 active:translate-y-0.5 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)]"
-          >
-            Login
-          </button>
-          {/* <LoadingButton
+            >
+              Login
+            </button>
+            {/* <LoadingButton
             fullWidth
             color="inherit"
             size="large"
@@ -149,20 +176,31 @@ export default function LoginView() {
           >
             Login
           </LoadingButton> */}
-        </Stack>
-      </FormProvider>
-      
-      <a
-        href="#"
-        className="text-lg text-center font-sans leading-tight p-3 hover:underline"
-      >
-        Forgot Password?
-      </a>
+          </Stack>
+        </FormProvider>
+
+        <a
+          href="#"
+          className="text-lg text-center font-sans leading-tight p-3 hover:underline"
+        >
+          Forgot Password?
+        </a>
+      </div>
     </div>
   );
 
   return (
     <div className="flex flex-col lg:flex-row h-full">
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={videoSrc}
+        ></video>
+      </div>
       {renderLeft}
       {renderRight}
     </div>

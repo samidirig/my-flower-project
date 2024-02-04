@@ -10,6 +10,8 @@ import { Stack } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import registerImg from "@/assets/couple_register.jpg";
+
 export default function LoginView() {
   const passwordShow = useBoolean();
 
@@ -24,7 +26,11 @@ export default function LoginView() {
 
   const loginValues = {
     email: "",
+    username: "",
+    name: "",
+    surname: "",
     password: "",
+    phone: "",
   };
 
   const methods = useForm({
@@ -53,7 +59,15 @@ export default function LoginView() {
   };
 
   const renderForm = (
-    <div className="flex flex-col items-center justify-center pb-20 lg:pt-0 auto gap-5 w-full h-full bg-white">
+    <div className="flex flex-col items-center justify-center pb-60 lg:pt-0 auto gap-5 w-full h-full bg-white ">
+      <div className="w-1/2 h-1/4 mb flex flex-row items-center justify-center">
+        <img
+          src="https://media.istockphoto.com/id/1457128336/vector/man-and-woman-are-sitting-embracing.jpg?s=612x612&w=0&k=20&c=v5D1Ln51f3MYN6kLCwGwfZnljO_vQw5J70vlUS0Vm-Y="
+          alt="register couple image"
+          className="w-auto h-full"
+        />
+      </div>
+
       <p className="text-3xl font-sans leading-tight">Create a new Account</p>
 
       <div className="h-px bg-gray-300 w-3/4" />
@@ -67,13 +81,6 @@ export default function LoginView() {
           <TextField
             fullWidth
             size="small"
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderRadius: "20px",
-                },
-              },
-            }}
             label="Email Adress"
             type="text"
             {...methods.register("email")}
@@ -83,13 +90,33 @@ export default function LoginView() {
           <TextField
             fullWidth
             size="small"
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderRadius: "20px",
-                },
-              },
-            }}
+            label="User Name"
+            type="text"
+            {...methods.register("username")}
+            error={Boolean(methods.formState.errors.email)}
+            helperText={methods.formState.errors.email?.message}
+          />
+          <TextField
+            fullWidth
+            size="small"
+            label="Name"
+            type="text"
+            {...methods.register("name")}
+            error={Boolean(methods.formState.errors.email)}
+            helperText={methods.formState.errors.email?.message}
+          />
+          <TextField
+            fullWidth
+            size="small"
+            label="Surname"
+            type="text"
+            {...methods.register("surname")}
+            error={Boolean(methods.formState.errors.email)}
+            helperText={methods.formState.errors.email?.message}
+          />
+          <TextField
+            fullWidth
+            size="small"
             label="Password"
             type="password"
             {...methods.register("password")}
@@ -131,6 +158,7 @@ export default function LoginView() {
           </LoadingButton> */}
         </Stack>
       </FormProvider>
+
       <div className="flex flex-row gap-2 p-5">
         <p className="text-lg text-center font-sans leading-tight">
           Already have an account?{" "}
@@ -145,5 +173,9 @@ export default function LoginView() {
     </div>
   );
 
-  return <div className="flex flex-col items-center justify-center h-full">{renderForm}</div>;
+  return (
+    <div className="flex flex-col items-center justify-center h-full">
+      {renderForm}
+    </div>
+  );
 }
