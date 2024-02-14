@@ -15,10 +15,12 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import backgroundVideo1 from "@/assets/videos/login_back_video.mp4";
 import backgroundVideo2 from "@/assets/videos/login_back_video_2.mp4";
 import backgroundVideo3 from "@/assets/videos/login_back_video_3.mp4";
+import useResponsive from "@/hooks/use-responsive";
 
 export default function LoginView() {
   const passwordShow = useBoolean();
   const [videoSrc, setVideoSrc] = useState("");
+  const mdUp = useResponsive("up", 768);
 
   useEffect(() => {
     const videos = [backgroundVideo1, backgroundVideo2, backgroundVideo3];
@@ -93,7 +95,7 @@ export default function LoginView() {
         <p className="text-3xl font-semibold leading-tight">
           Login to Your Account
         </p>
-
+        
         <div className="h-px bg-gray-700 w-3/4" />
         <FormProvider methods={methods} onSubmit={onSubmit}>
           <Stack
