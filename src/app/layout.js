@@ -1,11 +1,16 @@
-import { Inter } from "next/font/google";
 import "@/globals.css";
+
+import { Inter } from "next/font/google";
+
+import PropTypes from 'prop-types';
+
+// -------------------------------------------------------
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "My Flower",
-  description: "My Flower, developed by samidirig",
+  title: "My Portfolio",
+  description: "My Portfolio, developed by samidirig",
   keywords: "react,material,kit,application,dashboard,admin,template",
   manifest: "/manifest.json",
   icons: [
@@ -30,3 +35,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.node,
+};

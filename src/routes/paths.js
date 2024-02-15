@@ -1,5 +1,5 @@
 export const paths = {
-  myFlowerEn: {
+  myPortfolioEn: {
     root: "/",
     about: "/about",
     contact: "/contact",

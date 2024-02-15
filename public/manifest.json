@@ -1,6 +1,6 @@
 {
-    "name": "my-flower",
-    "short_name": "My Flower",
+    "name": "my-portfolio",
+    "short_name": "My Portfolio",
     "description": "Developed by samidirig",
     "display": "standalone",
     "start_url": "/",

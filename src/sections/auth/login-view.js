@@ -182,7 +182,7 @@ export default function LoginView() {
         </FormProvider>
 
         <a
-          href="#"
+          href="/reset-password"
           className="text-lg text-center font-sans leading-tight p-3 hover:underline"
         >
           Forgot Password?

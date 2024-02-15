@@ -12,8 +12,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import registerImg from "@/assets/couple_register.jpg";
 
-export default function LoginView() {
+export default function ResetPasswordView() {
   const passwordShow = useBoolean();
+  const replyPasswordShow = useBoolean();
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -22,20 +23,20 @@ export default function LoginView() {
     password: Yup.string()
       .required("Password is required")
       .min(6, "Password should be of minimum 6 characters length"),
+    replayPassword: Yup.string()
+      .required("Password is required")
+      .min(6, "Password should be of minimum 6 characters length"),
   });
 
-  const loginValues = {
+  const passwordValues = {
     email: "",
-    username: "",
-    name: "",
-    surname: "",
     password: "",
-    phone: "",
+    replayPassword: "",
   };
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
-    loginValues,
+    passwordValues,
   });
 
   const {
@@ -54,21 +55,14 @@ export default function LoginView() {
     }
   });
 
-  const handleSignUpClick = () => {
+  const handleResetPasswordClick = () => {
     window.location.href = "/register"; // Change the URL directly
   };
 
   return (
     <div className="flex flex-col items-center justify-center lg:pt-0 auto gap-5 w-full h-full bg-white">
-      <div className="w-1/4 h-1/4 flex flex-row items-center justify-center">
-        <img
-          src="https://media.istockphoto.com/id/1457128336/vector/man-and-woman-are-sitting-embracing.jpg?s=612x612&w=0&k=20&c=v5D1Ln51f3MYN6kLCwGwfZnljO_vQw5J70vlUS0Vm-Y="
-          alt="register couple image"
-          className="w-auto h-auto md:h-full"
-        />
-      </div>
 
-      <p className="text-3xl font-sans leading-tight">Create a new Account</p>
+      <p className="text-3xl font-sans leading-tight">Reset Your Password</p>
 
       <div className="h-px bg-gray-300 w-3/4" />
 
@@ -84,33 +78,6 @@ export default function LoginView() {
             label="Email Adress"
             type="text"
             {...methods.register("email")}
-            error={Boolean(methods.formState.errors.email)}
-            helperText={methods.formState.errors.email?.message}
-          />
-          <TextField
-            fullWidth
-            size="small"
-            label="User Name"
-            type="text"
-            {...methods.register("username")}
-            error={Boolean(methods.formState.errors.email)}
-            helperText={methods.formState.errors.email?.message}
-          />
-          <TextField
-            fullWidth
-            size="small"
-            label="Name"
-            type="text"
-            {...methods.register("name")}
-            error={Boolean(methods.formState.errors.email)}
-            helperText={methods.formState.errors.email?.message}
-          />
-          <TextField
-            fullWidth
-            size="small"
-            label="Surname"
-            type="text"
-            {...methods.register("surname")}
             error={Boolean(methods.formState.errors.email)}
             helperText={methods.formState.errors.email?.message}
           />
@@ -135,6 +102,27 @@ export default function LoginView() {
               ),
             }}
           />
+          <TextField
+            fullWidth
+            size="small"
+            label="Reply Password"
+            type="password"
+            {...methods.register("replyPassword")}
+            error={Boolean(methods.formState.errors.password)}
+            helperText={methods.formState.errors.password?.message}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  edge="end"
+                  onClick={replyPasswordShow.onToggle}
+                  onMouseDown={(e) => e.preventDefault()}
+                  tabIndex={-1}
+                >
+                  {replyPasswordShow.value ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              ),
+            }}
+          />
 
           <button
             type="submit"
@@ -147,7 +135,7 @@ export default function LoginView() {
               focus:outline-none
               active:bg-success-700 active:translate-y-0.5 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)]"
           >
-            Sign Up
+            Send Mail
           </button>
           {/* <LoadingButton
             fullWidth
@@ -164,7 +152,7 @@ export default function LoginView() {
 
       <div className="flex flex-row gap-2 p-5">
         <p className="text-lg text-center font-sans leading-tight">
-          Already have an account?{" "}
+          Do you remember?{" "}
         </p>
         <a
           href="/login"
