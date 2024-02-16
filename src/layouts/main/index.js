@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Header from "./header";
 import Footer from "./footer";
-import { Box } from "@mui/material";
 
 export const HEADER = {
   H_MOBILE: 64,
@@ -11,22 +10,15 @@ export const HEADER = {
 
 export default function MainLayout({ children }) {
   return (
-    <Box className="flex flex-col h-screen">
-      <Header />
-
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-        }}
-      >
-        <div className="h-full">
-          {children}
-        </div>
-      </Box>
-
-      <Footer />
-    </Box>
+    <div className="flex flex-col min-h-full justify-between gap-auto">
+      <div className="flex-grow">
+        <Header />
+        <main className="my-0 py-16">{children}</main>
+      </div>
+      <div className="flex flex-col w-full">
+        <Footer />
+      </div>
+    </div>
   );
 }
 

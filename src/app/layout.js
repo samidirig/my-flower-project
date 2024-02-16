@@ -2,7 +2,7 @@ import "@/globals.css";
 
 import { Inter } from "next/font/google";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 // -------------------------------------------------------
 
@@ -24,14 +24,15 @@ export const metadata = {
 export const viewport = {
   themeColor: "#000000",
   width: "device-width",
+  height: "device-height",
   initialScale: 1,
   maximumScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
     </html>
   );
 }

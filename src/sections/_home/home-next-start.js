@@ -1,3 +1,7 @@
+import { _brands } from "@/_mock/_others";
+
+import BrandsCarousel from "@/components/carousels/brands-carousel";
+
 import Image from "next/image";
 
 export default function HomeNextStart() {
