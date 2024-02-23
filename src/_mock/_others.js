@@ -7,6 +7,9 @@ const BRANDS_NAME = [
     'brand_4',
     'brand_5',
     'brand_6',
+    'brand_7',
+    'brand_8',
+    'brand_9',
   ];
   
   export const _brands = BRANDS_NAME.map((brand, index) => ({

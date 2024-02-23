@@ -7,9 +7,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useBoolean } from "@/hooks/use-boolean";
-import { Divider, IconButton, TextField, Typography } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
-import { LoadingButton } from "@mui/lab";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import backgroundVideo1 from "@/assets/videos/login_back_video.mp4";
@@ -168,16 +167,6 @@ export default function LoginView() {
             >
               Login
             </button>
-            {/* <LoadingButton
-            fullWidth
-            color="inherit"
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-          >
-            Login
-          </LoadingButton> */}
           </Stack>
         </FormProvider>
 

@@ -18,12 +18,12 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
   height: 100vh;
 }
 
@@ -31,4 +31,24 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.text-gradient-cyan-to-green {
+  background: linear-gradient(to right, cyan -20%, green 70%, lime 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-pink-to-blue {
+  background: linear-gradient(to right, #800080 0%, #ecbdc5 50%, #289eff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-icon {
+  transition: box-shadow 0.5s ease;
+}
+
+.footer-icon:hover {
+  box-shadow: 0 4px 6px rgba(0, 50, 0, 0.2);
 }

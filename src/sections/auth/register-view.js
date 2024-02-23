@@ -1,16 +1,16 @@
 "use client";
 
+// @ it means --> ./src/
+
 import * as Yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useBoolean } from "@/hooks/use-boolean";
-import { Divider, IconButton, TextField, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
-import { LoadingButton } from "@mui/lab";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import registerImg from "@/assets/couple_register.jpg";
+import { IconButton, TextField } from "@mui/material";
+import { Stack } from "@mui/system";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function LoginView() {
   const passwordShow = useBoolean();
@@ -53,10 +53,6 @@ export default function LoginView() {
       console.error(error);
     }
   });
-
-  const handleSignUpClick = () => {
-    window.location.href = "/register"; // Change the URL directly
-  };
 
   return (
     <div className="flex flex-col items-center justify-center lg:pt-0 auto gap-5 w-full h-full bg-white">
@@ -149,16 +145,6 @@ export default function LoginView() {
           >
             Sign Up
           </button>
-          {/* <LoadingButton
-            fullWidth
-            color="inherit"
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-          >
-            Login
-          </LoadingButton> */}
         </Stack>
       </FormProvider>
 

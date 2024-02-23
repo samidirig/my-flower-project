@@ -5,12 +5,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useBoolean } from "@/hooks/use-boolean";
-import { Divider, IconButton, TextField, Typography } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
-import { LoadingButton } from "@mui/lab";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-
-import registerImg from "@/assets/couple_register.jpg";
 
 export default function ResetPasswordView() {
   const passwordShow = useBoolean();
@@ -55,13 +52,8 @@ export default function ResetPasswordView() {
     }
   });
 
-  const handleResetPasswordClick = () => {
-    window.location.href = "/register"; // Change the URL directly
-  };
-
   return (
     <div className="flex flex-col items-center justify-center lg:pt-0 auto gap-5 w-full h-full bg-white">
-
       <p className="text-3xl font-sans leading-tight">Reset Your Password</p>
 
       <div className="h-px bg-gray-300 w-3/4" />
@@ -137,16 +129,6 @@ export default function ResetPasswordView() {
           >
             Send Mail
           </button>
-          {/* <LoadingButton
-            fullWidth
-            color="inherit"
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-          >
-            Login
-          </LoadingButton> */}
         </Stack>
       </FormProvider>
 

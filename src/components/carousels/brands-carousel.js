@@ -46,13 +46,16 @@ export default function BrandsCarousel({ brands }) {
         {brands.map((brand) => (
           <div
             key={brand.id}
-            className="flex flex-row items-center justify-center"
+            className="flex flex-row items-center justify-center outline-none"
           >
             <img
               alt="brand_logos"
               src={brand.image}
-              style={{ width: "55%", mixBlendMode: "color-burn" }}
-              className="aspect-square object-contain mix-blend-color-burn"
+              style={{
+                width: "55%",
+                height: "75px",
+              }}
+              className="aspect-square object-contain outline-none"
             />
           </div>
         ))}
